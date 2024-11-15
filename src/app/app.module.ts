@@ -7,15 +7,16 @@ import { registerLocaleData } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout';
-import { AppMenuModule } from './menu';
-import { AppPageNotFoundComponent } from './app-page-not-found.component';
-import { AppProgressBarComponent } from './app-progress-bar.component';
+import { AppMenuModule } from './components/menu/app-menu.module';
+import { AppPageNotFoundComponent } from './components/page-not-found/app-page-not-found.component';
+import { AppProgressBarComponent } from './components/progress-bar/app-progress-bar.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AppTrendsModule } from './trends';
-import { httpInterceptorProviders } from './app-http-interceptors';
+import { AppTrendsModule } from './pages/trends/app-trends.module';
+import { httpInterceptorProviders } from './interceptors/app-http-interceptors';
 import { reducers } from './store/reducers';
 
 import localeEs from '@angular/common/locales/es';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -23,6 +24,7 @@ registerLocaleData(localeEs, 'es');
     AppComponent,
     AppProgressBarComponent,
     AppPageNotFoundComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

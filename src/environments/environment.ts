@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   avantioAPIHost: 'https://challenge.avantio.pro',
-  avantioAPIAuthToken: '',
+  avantioAPIAuthToken: 'ipi7fam8gwq0rvz4ct4plal',
 };
 
 /*

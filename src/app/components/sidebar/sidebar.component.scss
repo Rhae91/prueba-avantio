@@ -1,0 +1,38 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  overflow-x: hidden;
+  transform: translateX(100%); /* Oculto por defecto */
+  transition: transform 0.3s ease; /* Animación de desplazamiento */
+}
+
+.sidebar.open {
+  transform: translateX(0); /* Mostrar el sidebar */
+}
+
+.sidebar .content {
+  padding: 16px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 8px 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
