@@ -1,10 +1,7 @@
-<div class="sidebar" [class.open]="isOpen">
+<div class="backdrop" *ngIf="isOpen$| async" (click)="closeSidebar()"></div>
+
+<div class="sidebar" [class.open]="isOpen$ | async">
   <div class="content">
-    <h2>Menú</h2>
-    <ul>
-      <li><a href="#">Opción 1</a></li>
-      <li><a href="#">Opción 2</a></li>
-      <li><a href="#">Opción 3</a></li>
-    </ul>
+    <ng-content></ng-content>
   </div>
 </div>

@@ -28,6 +28,9 @@
   padding: 0;
   text-align: center;
   background-color: color.scale($primary, $alpha: -80%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:active {
     transform: scale(0.95);

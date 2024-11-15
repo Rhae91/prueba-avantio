@@ -1,0 +1,28 @@
+button {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  background-color: #f15f41;
+  border: none;
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(241, 95, 65, 0.8);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  & > img {
+    width: 50%;
+    vertical-align: bottom;
+    color: white;
+  }
+
+  &:hover {
+    background-color: #d45036;
+    box-shadow: 0 0 20px rgba(212, 80, 54, 0.8);
+  }
+}

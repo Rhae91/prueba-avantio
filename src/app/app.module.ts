@@ -36,7 +36,8 @@ registerLocaleData(localeEs, 'es');
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot()
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }, httpInterceptorProviders],
+  providers: [{provide: LOCALE_ID, useValue: 'es'}, httpInterceptorProviders],
   bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule {}

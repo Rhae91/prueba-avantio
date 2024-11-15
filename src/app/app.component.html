@@ -23,11 +23,9 @@
     </nav>
     <main class="app-main-content">
       <router-outlet></router-outlet>
-      <button (click)="sidebar.toggleSidebar()" class="p-2 bg-blue-500 text-white rounded">
-        Abrir Sidebar
-      </button>
-
-      <app-sidebar #sidebar></app-sidebar>
+      <app-sidebar>
+        <app-detail-form></app-detail-form>
+      </app-sidebar>
     </main>
 
 

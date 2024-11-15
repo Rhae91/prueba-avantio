@@ -7,11 +7,11 @@ import * as sidebarReducer from './sidebar.reducer';
 export interface State {
   loader: fromLoaderReducer.State;
   router: RouterState;
-  sidenav: sidebarReducer.SidebarState;
+  sidebar: sidebarReducer.SidebarState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   loader: fromLoaderReducer.reducer,
   router: routerReducer,
-  sidenav: sidebarReducer.sidebarReducer
+  sidebar: sidebarReducer.sidebarReducer
 };

@@ -11,9 +11,11 @@ import { TrendService } from './services/trend.service';
 import { TrendsListComponent } from './components/trends-list/trends-list.component';
 import { trendsEffects } from './store/effects';
 import { trendsFeatureKey, trendsReducer } from './store/reducers';
+import {AddBtnComponent} from "./components/add-btn/add-btn.component";
+import {DetailFormComponent} from "./components/detail-form/datail-form.component";
 
 @NgModule({
-  declarations: [TrendsListComponent, TrendDetailComponent],
+  declarations: [TrendsListComponent, TrendDetailComponent, AddBtnComponent, DetailFormComponent],
   imports: [
     CommonModule,
     AppTrendsRoutingModule,
@@ -21,7 +23,7 @@ import { trendsFeatureKey, trendsReducer } from './store/reducers';
     StoreModule.forFeature(trendsFeatureKey, trendsReducer),
     EffectsModule.forFeature(trendsEffects),
   ],
-  exports: [TrendsListComponent],
+  exports: [TrendsListComponent, DetailFormComponent],
   providers: [
     TrendService,
     {

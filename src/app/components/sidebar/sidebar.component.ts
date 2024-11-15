@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {Store} from "@ngrx/store";
+import {delay} from "rxjs/operators";
+import {selectIsOpenState} from "../../store/selectors/sidebar.selectors";
+import {toggleSidebar} from "../../store/actions/sidebar.actions";
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
 
-  isOpen: boolean = false;
-  constructor() { }
+  isOpen$ = this.store.select(selectIsOpenState).pipe(delay(0));
+  constructor(private store: Store) { }
 
-  ngOnInit(): void {
-  }
-
-  toggleSidebar() {
-    this.isOpen = !this.isOpen;
+  closeSidebar() {
+    this.store.dispatch(toggleSidebar());
   }
 
 }

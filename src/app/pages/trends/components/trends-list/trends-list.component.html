@@ -10,3 +10,5 @@
         <p class="trend__excerpt">{{ trend.body[0] }}</p>
       </a>
     </article>
+
+    <add-btn *ngIf="!(showButton$ | async)"></add-btn>

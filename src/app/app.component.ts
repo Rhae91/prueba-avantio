@@ -4,6 +4,7 @@ import { delay } from 'rxjs/operators';
 
 import { CustomBreakpointObserver } from './layout';
 import { selectIsLoadingState } from './store/selectors';
+import {toggleSidebar} from "./store/actions/sidebar.actions";
 
 @Component({
   selector: 'app-root',

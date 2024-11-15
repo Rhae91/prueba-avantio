@@ -13,6 +13,8 @@ export const initialSidebarState: SidebarState = {
 
 export const sidebarReducer = createReducer(
   initialSidebarState,
-  on(SidebarActions.toggleSidebar, (state): SidebarState => ({ ...state, isOpen: true })),
+  on(SidebarActions.toggleSidebar, (state): SidebarState => ({ ...state, isOpen: !state.isOpen })),
 );
+
+export const selectIsOpenState = (state: SidebarState) => state.isOpen;
 
