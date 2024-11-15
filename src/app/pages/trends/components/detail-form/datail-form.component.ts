@@ -13,6 +13,7 @@ import {Subscription} from "rxjs";
 export class DetailFormComponent implements OnInit, OnDestroy {
 
   title: string = 'Nuevo Trend';
+  editForm: boolean = false;
   trendsForm: FormGroup;
   routeSubs: Subscription | undefined;
 
@@ -20,8 +21,8 @@ export class DetailFormComponent implements OnInit, OnDestroy {
     this.trendsForm = this.formBuilder.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
-      url: ['', [Validators.required, Validators.pattern('https?://.+')]],
-      image: ['', Validators.required, Validators.pattern('https?://.+')],
+      url: ['', Validators.required],
+      image: ['', Validators.required],
       provider: ['', Validators.required]
     });
   }
@@ -30,10 +31,13 @@ export class DetailFormComponent implements OnInit, OnDestroy {
     this.store.select(selectSelectedTrend).subscribe(trend => {
       if (trend) {
         this.title = 'Editar Trend';
-        console.log(trend);
+        this.editForm = true;
         this.trendsForm.patchValue(trend);
+        console.log(this.trendsForm.value);
       } else {
+        this.editForm = false;
         this.title = 'Nuevo Trend';
+        this.trendsForm.reset();
       }
     })
   }
@@ -43,7 +47,7 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   }
 
   cancelForm() {
-    this.trendsForm.reset();
+    if (!this.editForm) this.trendsForm.reset();
     this.store.dispatch(toggleSidebar())
   }
 
