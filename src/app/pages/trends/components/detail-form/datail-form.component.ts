@@ -30,9 +30,11 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.select(selectSelectedTrend).subscribe(trend => {
       if (trend) {
+        const textArea = trend.transformBodyToTextarea();
         this.title = 'Editar Trend';
         this.editForm = true;
         this.trendsForm.patchValue(trend);
+        this.trendsForm.patchValue({body: textArea})
         console.log(this.trendsForm.value);
       } else {
         this.editForm = false;

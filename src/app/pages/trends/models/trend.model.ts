@@ -19,4 +19,8 @@ export class Trend {
       this.title = trendResponse.title;
       this.url = trendResponse.url;
   }
+
+  transformBodyToTextarea() {
+    return this.body.join('\n\n');
+  }
 }
