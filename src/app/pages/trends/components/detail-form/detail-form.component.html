@@ -1,1 +1,52 @@
-<p>datail-form works!</p>
+<div class="form-header">
+  <h5 class="title"> {{ title }}</h5>
+  <div class="buttons">
+    <button class="cancel-btn">Cancelar</button>
+    <button class="submit-btn">Guardar</button>
+  </div>
+</div>
+<form [formGroup]="trendsForm">
+  <div class="form-group">
+    <label for="title">Título</label>
+    <input id="title" formControlName="title" class="form-control" type="text" />
+    <div *ngIf="trendsForm.get('title')?.invalid && trendsForm.get('title')?.touched" class="error">
+      El título es obligatorio.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="provider">Proveedor</label>
+    <select id="provider" formControlName="provider" class="form-control">
+      <option value="" disabled selected>Selecciona un proveedor</option>
+      <option value="elpais">El País</option>
+      <option value="elmundo">El Mundo</option>
+    </select>
+    <div *ngIf="trendsForm.get('provider')?.invalid && trendsForm.get('provider')?.touched" class="error">
+      El proveedor es obligatorio.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input id="url" formControlName="url" class="form-control" type="text" />
+    <div *ngIf="trendsForm.get('url')?.invalid && trendsForm.get('url')?.touched" class="error">
+      La URL es obligatoria y debe ser válida.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="image">Image URL</label>
+    <input id="image" formControlName="image" class="form-control" type="text" />
+    <div *ngIf="trendsForm.get('image')?.invalid && trendsForm.get('image')?.touched" class="error">
+      La URL de la imagen es obligatoria.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="body">Contenido</label>
+    <textarea id="body" formControlName="body" class="form-control textarea"></textarea>
+    <div *ngIf="trendsForm.get('body')?.invalid && trendsForm.get('body')?.touched" class="error">
+      El contenido es obligatorio.
+    </div>
+  </div>
+</form>

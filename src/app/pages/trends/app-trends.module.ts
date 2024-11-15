@@ -13,11 +13,14 @@ import { trendsEffects } from './store/effects';
 import { trendsFeatureKey, trendsReducer } from './store/reducers';
 import {AddBtnComponent} from "./components/add-btn/add-btn.component";
 import {DetailFormComponent} from "./components/detail-form/datail-form.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [TrendsListComponent, TrendDetailComponent, AddBtnComponent, DetailFormComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppTrendsRoutingModule,
     HttpClientModule,
     StoreModule.forFeature(trendsFeatureKey, trendsReducer),

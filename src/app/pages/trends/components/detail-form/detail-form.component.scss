@@ -1,0 +1,76 @@
+@import 'settings/variables';
+
+.form-header {
+  margin: 2em 0 3em 0;
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    font-size: 20px;
+  }
+
+  .buttons {
+    display: flex;
+    .cancel-btn {
+      border-radius: .5em;
+      border: 1px solid transparent;
+      padding: .5em 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $font-family;
+      color: $font-color-dark;
+      margin-right: .5em;
+      &:hover {
+        color: $primary;
+        border: 1px solid $primary;
+      }
+    }
+    .submit-btn {
+      font-family: $font-family;
+      background-color: $primary;
+      border-radius: .5em;
+      padding: .5em 2em;
+      display: flex;
+      color: $secondary;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      &:hover {
+        background-color: #d45036;
+      }
+    }
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+
+
+  label {
+    font-family: $font-family;
+    color: $font-color-dark;
+    font-weight: 500;
+    margin-bottom: .5em;
+  }
+
+  .form-control {
+    border: 1px solid black;
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .textarea {
+    resize: none;
+    height: 300px;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}

@@ -1,8 +1,10 @@
+@import 'settings/variables';
+
 button {
   position: fixed;
   bottom: 3rem;
   right: 3rem;
-  background-color: #f15f41;
+  background-color: $primary;
   border: none;
   border-radius: 100%;
   width: 4rem;
