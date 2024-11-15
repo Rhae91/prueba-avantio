@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 
 import { selectSelectedTrend } from '../../store/selectors';
 import {TrendService} from "../../services/trend.service";
+import {toggleSidebar} from "../../../../store/actions/sidebar.actions";
+import {loadOneTrendError} from "../../store/actions/trends-api.actions";
 
 @Component({
   selector: 'app-trend-detail',
@@ -16,5 +18,13 @@ export class TrendDetailComponent {
 
   deleteTrend(trendId: string) {
     this.trendService.deleteOne(trendId).subscribe(r => console.log(r));
+  }
+
+  editTrend() {
+    this.store.dispatch(toggleSidebar());
+  }
+
+  clearTrend() {
+    this.store.dispatch(loadOneTrendError());
   }
 }
