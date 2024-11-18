@@ -5,6 +5,8 @@ import { selectSelectedTrend } from '../../store/selectors';
 import {TrendService} from "../../services/trend.service";
 import {toggleSidebar} from "../../../../store/actions/sidebar.actions";
 import {loadOneTrendError} from "../../store/actions/trends-api.actions";
+import {NotificationService} from "../../../../services/notification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-trend-detail',
@@ -14,10 +16,14 @@ import {loadOneTrendError} from "../../store/actions/trends-api.actions";
 export class TrendDetailComponent {
   protected trend$ = this.store.select(selectSelectedTrend);
 
-  constructor(private store: Store, private trendService: TrendService) {}
+  constructor(private store: Store, private trendService: TrendService, private notificationService: NotificationService, private router: Router) {}
 
   deleteTrend(trendId: string) {
-    this.trendService.deleteOne(trendId).subscribe(r => console.log(r));
+    this.trendService.deleteOne(trendId).subscribe(() => {
+      this.notificationService.show('error','Trend Eliminado','La noticia ha sido eliminada con exito.')
+      this.store.dispatch(loadOneTrendError());
+      this.router.navigate(['/trends']);
+    });
   }
 
   editTrend() {

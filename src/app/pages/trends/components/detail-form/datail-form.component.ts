@@ -5,6 +5,11 @@ import {Store} from "@ngrx/store";
 import {selectSelectedTrend} from "../../store/selectors";
 import {Subscription} from "rxjs";
 import {NotificationService} from "../../../../services/notification.service";
+import {addTrend} from "../../store/actions/trends-api.actions";
+import {Trend} from "../../models/trend.model";
+import {TrendService} from "../../services/trend.service";
+import {Router} from "@angular/router";
+import {loadTrends} from "../../store/actions/trends-list-page.actions";
 
 @Component({
   selector: 'app-detail-form',
@@ -18,8 +23,13 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   trendsForm: FormGroup;
   routeSubs: Subscription | undefined;
 
-  constructor(private formBuilder: FormBuilder, private store: Store, private notificationService: NotificationService) {
+  constructor(private formBuilder: FormBuilder,
+              private store: Store,
+              private notificationService: NotificationService,
+              private trendService: TrendService,
+              private router: Router) {
     this.trendsForm = this.formBuilder.group({
+      id: [''],
       title: ['', Validators.required],
       body: ['', Validators.required],
       url: ['', Validators.required],
@@ -31,12 +41,9 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.select(selectSelectedTrend).subscribe(trend => {
       if (trend) {
-        const textArea = trend.transformBodyToTextarea();
         this.title = 'Editar Trend';
         this.editForm = true;
         this.trendsForm.patchValue(trend);
-        this.trendsForm.patchValue({body: textArea})
-        console.log(this.trendsForm.value);
       } else {
         this.editForm = false;
         this.title = 'Nuevo Trend';
@@ -57,7 +64,20 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   submitForm() {
     const title = this.editForm ? 'Trend Editada' : 'Trend Creada';
     const message = this.editForm ? 'La noticia fue editada con exito' : 'La noticia fue creada con exito';
-    this.notificationService.show("success",title,message);
+    const id = this.trendsForm.value.id;
+    const newTrend = new Trend(this.trendsForm.value);
+    if (this.editForm) {
+      this.trendService.modifyOne(newTrend, id).subscribe(() => {
+        this.notificationService.show("success",title,message);
+        this.trendsForm.reset();
+        this.router.navigate(['/trends'])
+      });
+    } else {
+      this.trendService.createOne(newTrend).subscribe(() => {
+        this.notificationService.show("success",title,message);
+        this.store.dispatch(loadTrends());
+      });
+    }
     this.store.dispatch(toggleSidebar());
   }
 

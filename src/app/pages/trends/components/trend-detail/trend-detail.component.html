@@ -22,7 +22,7 @@
           </a>
         </h2>
         <div class="trend_paragraph-container">
-          <p class="trend__paragraph" *ngFor="let paragraph of trend.body">
+          <p class="trend__paragraph" *ngFor="let paragraph of trend.getParagraphs()">
             {{ paragraph }}
           </p>
         </div>

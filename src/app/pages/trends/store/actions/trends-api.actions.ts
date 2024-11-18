@@ -9,6 +9,10 @@ export const loadTrendsSuccess = createAction(
 
 export const loadTrendsError = createAction('[Trends/API] Load Trends Error');
 
+export const addTrend = createAction('[Trends List Page] Add Trend', props<{trend: Trend}>());
+export const removeTrend = createAction('[Trends List Page] Remove Trend', props<{id:string}>());
+export const getOneTrendFromStore = createAction('[Trends List Page]Get one trend from Store', props<{id: string}>());
+
 export const loadOneTrendSuccess = createAction(
   '[Trends/API] Load One Trend Success',
   props<{ trend: Trend }>()

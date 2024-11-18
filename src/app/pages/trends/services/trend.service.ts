@@ -34,4 +34,18 @@ export class TrendService {
       .delete<any>(url)
       .pipe(tap(r => console.log(r)));
   }
+
+  public createOne(trend: Trend): Observable<any> {
+    const url = `${this.getAllUrl}`;
+    return this.httpClient
+      .post<Trend>(url, trend)
+      .pipe(tap(r => console.log(r)));
+  }
+
+  public modifyOne(trend: Trend, id: string): Observable<any> {
+    const url = `${this.getAllUrl}/${id}`;
+    return this.httpClient
+      .put<Trend>(url, trend)
+      .pipe(tap(r => console.log(r)));
+  }
 }
