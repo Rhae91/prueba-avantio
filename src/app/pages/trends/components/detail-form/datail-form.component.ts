@@ -4,6 +4,7 @@ import {toggleSidebar} from "../../../../store/actions/sidebar.actions";
 import {Store} from "@ngrx/store";
 import {selectSelectedTrend} from "../../store/selectors";
 import {Subscription} from "rxjs";
+import {NotificationService} from "../../../../services/notification.service";
 
 @Component({
   selector: 'app-detail-form',
@@ -17,7 +18,7 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   trendsForm: FormGroup;
   routeSubs: Subscription | undefined;
 
-  constructor(private formBuilder: FormBuilder, private store: Store) {
+  constructor(private formBuilder: FormBuilder, private store: Store, private notificationService: NotificationService) {
     this.trendsForm = this.formBuilder.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
@@ -54,6 +55,9 @@ export class DetailFormComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
+    const title = this.editForm ? 'Trend Editada' : 'Trend Creada';
+    const message = this.editForm ? 'La noticia fue editada con exito' : 'La noticia fue creada con exito';
+    this.notificationService.show("success",title,message);
     this.store.dispatch(toggleSidebar());
   }
 

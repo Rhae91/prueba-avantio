@@ -1,0 +1,10 @@
+<div *ngIf="show" class="notification" [ngClass]="type">
+  <div class="notification-icon">
+    <i *ngIf="type === 'success'" class="icon-check-circle"></i>
+    <i *ngIf="type === 'error'" class="icon-error-circle"></i>
+  </div>
+  <div class="notification-content">
+    <strong>{{ title }}</strong>
+    <p>{{ message }}</p>
+  </div>
+</div>

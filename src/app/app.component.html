@@ -22,6 +22,7 @@
       <app-menu-large *ngIf="isLargeScreen$ | async"></app-menu-large>
     </nav>
     <main class="app-main-content">
+      <app-notification-container></app-notification-container>
       <router-outlet></router-outlet>
       <app-sidebar>
         <app-detail-form></app-detail-form>

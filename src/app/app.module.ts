@@ -17,6 +17,7 @@ import { reducers } from './store/reducers';
 
 import localeEs from '@angular/common/locales/es';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {NotificationModule} from "./components/notification-container/notification.module";
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -24,7 +25,7 @@ registerLocaleData(localeEs, 'es');
     AppComponent,
     AppProgressBarComponent,
     AppPageNotFoundComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ registerLocaleData(localeEs, 'es');
     AppMenuModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    NotificationModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es'}, httpInterceptorProviders],
   bootstrap: [AppComponent],

@@ -1,0 +1,9 @@
+<div class="notification-container">
+  <app-notification
+    *ngFor="let notification of notifications"
+    [type]="notification.type"
+    [title]="notification.title"
+    [message]="notification.message"
+    [duration]="notification.duration">
+  </app-notification>
+</div>
