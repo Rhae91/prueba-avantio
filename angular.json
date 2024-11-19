@@ -19,6 +19,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/",
             "outputPath": "dist/frontend-angular-challenge",
             "index": "src/index.html",
             "main": "src/main.ts",
