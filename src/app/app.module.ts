@@ -6,7 +6,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { registerLocaleData } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { AppLayoutModule } from './layout';
 import { AppMenuModule } from './components/menu/app-menu.module';
 import { AppPageNotFoundComponent } from './components/page-not-found/app-page-not-found.component';
 import { AppProgressBarComponent } from './components/progress-bar/app-progress-bar.component';
@@ -18,6 +17,7 @@ import { reducers } from './store/reducers';
 import localeEs from '@angular/common/locales/es';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {NotificationModule} from "./components/notification-container/notification.module";
+import { LayoutDirective } from './directives/layout.directive';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -25,13 +25,13 @@ registerLocaleData(localeEs, 'es');
     AppComponent,
     AppProgressBarComponent,
     AppPageNotFoundComponent,
-    SidebarComponent
+    SidebarComponent,
+    LayoutDirective
   ],
   imports: [
     BrowserModule,
     AppTrendsModule,
     AppRoutingModule,
-    AppLayoutModule,
     AppMenuModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
