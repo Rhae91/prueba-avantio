@@ -70,7 +70,7 @@ Se ha decantado por el uso de modelo, mas estricto que las interfaces, que adema
 delimitando las interfaces a los dto dados por el back en los servicios api (no se ha realizado el servicio api, ya que al ser algo pequeño se
 ha obviado) pasados por el servicio app a un Modelo adecuado a la aplicacion, siguiendo el patron de arquitectura 3 capas de fronend.
 
-image:./assets/readme/arquitectura.png[screenshot]
+![atrends](./assets/readme/arquitectura.png)
 
 ### Author ✒️
 
