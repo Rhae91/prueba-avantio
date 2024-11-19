@@ -6,7 +6,8 @@ Prueba tecnica realizada con la version dada por el proyecto original: Angular 1
 
 Se ha cambiado la estructura del proyecto para asemejarse al standard de Angular, siguiendo el siguiente patron:
 
-----
+````
+```
 [app]
 ├── app.component.[html|ts|scss|spec.ts]
 ├── app.module.ts
@@ -55,7 +56,8 @@ Se ha cambiado la estructura del proyecto para asemejarse al standard de Angular
     ├── feature2/
     |   └── ...
     └── ...
-----
+```
+````
 
 ### Cambios en el layout
 
